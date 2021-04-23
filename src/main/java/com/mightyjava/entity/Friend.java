@@ -12,6 +12,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
 @Entity
 @Table
 public class Friend {
@@ -50,9 +59,19 @@ public class Friend {
 		this.lastName = lastName;
 	}
 
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
+
 	@Override
 	public String toString() {
 		return "Friend [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
 				+ "]";
 	}
+
+	
 }

@@ -8,6 +8,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
 @Entity
 public class Address {
 
@@ -60,12 +69,12 @@ public class Address {
 		this.country = country;
 	}
 
-	public Friend getFriend() {
-		return friend;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setFriend(Friend friend) {
-		this.friend = friend;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public Long getFriendId() {
@@ -76,12 +85,12 @@ public class Address {
 		this.friendId = friendId;
 	}
 
-	public String getCategory() {
-		return category;
+	public Friend getFriend() {
+		return friend;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setFriend(Friend friend) {
+		this.friend = friend;
 	}
 
 	@Override
@@ -89,4 +98,6 @@ public class Address {
 		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + ", category="
 				+ category + ", friend=" + friend + "]";
 	}
+
+	
 }
