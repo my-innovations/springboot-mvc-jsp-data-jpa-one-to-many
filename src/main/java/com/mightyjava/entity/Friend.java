@@ -3,6 +3,7 @@ package com.mightyjava.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,29 +12,37 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.UniqueConstraint;
 
 //@Data
 //@NoArgsConstructor
 //@AllArgsConstructor
 //@Builder
 @Entity
-@Table
-public class Friend {
+@Table(name="friend",uniqueConstraints = {@UniqueConstraint(columnNames = "id")/*,@UniqueConstraint(columnNames = "EMAIL") */})
+public class Friend { //parent entity
 
 	@Id
+	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "f_seq")
 	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
-	private Long id; //PK
+	private Long id;
+	@Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
 	private String firstName;
+	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
-
-	@OneToMany(targetEntity = Address.class, mappedBy = "friend", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(
+			targetEntity = Address.class, 
+			mappedBy = "friend", 
+			fetch = FetchType.LAZY, 
+			cascade = {CascadeType.ALL}) //This will delete all the assotiated child records.
+			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, 
+			//,orphanRemoval = true)
+	//@JoinColumn(name="friend_id")
+	
+	//private Set<Address> addresses= new HashSet<>(); //Ok
 	private Set<Address> addresses;
+	
 
 	public Long getId() {
 		return id;
@@ -64,7 +73,8 @@ public class Friend {
 	}
 
 	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
+		//this.addresses.clear();
+		this.addresses.addAll(addresses);
 	}
 
 	@Override

@@ -9,16 +9,16 @@
 </head>
 <body>
 <center>
-	<p><a href="${path}/friend/">Home</a> |  <a href="${path}/friend/form">Add A New Friend</a> | <a href="${path}/address/all">View All Friends with Addresses</a></p>
+	<p><a href="${path}/friend/">Home</a> |  <a href="${path}/friend/new">Add A New Friend</a> | <a href="${path}/address/all">View All Friends with Addresses</a></p>
+	<h1>All Friends</h1>
 	<table border="1">
 		<thead>
 			<tr>
 				<th>Friend Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
+				<th>Edit/Delete</th>
 				<th>Address</th>
-				<th>Edit</th>
-				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,9 +27,8 @@
 					<td>${friend.id}</td>
 					<td>${friend.firstName}</td>
 					<td>${friend.lastName}</td>
-					<td><a href="${path}/address/form">Add New Addresses</a> | <a href="${path}/address/friend/${friend.id}">View All Addresses</a></td>
-					<td><a href="${path}/friend/editFriendForm/${friend.id}">Edit This Friend</a></td>
-					<td><a href="${path}/friend/delete/${friend.id}">Delete This Friend</a></td>
+					<td><a href="${path}/friend/editFriendForm/${friend.id}">Edit / <a href="${path}/friend/delete/${friend.id}">Delete</a></a></td>
+					<td><a href="${path}/address/form">Add New Addresses</a> | <a href="${path}/friend/${friend.id}">View All Addresses</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

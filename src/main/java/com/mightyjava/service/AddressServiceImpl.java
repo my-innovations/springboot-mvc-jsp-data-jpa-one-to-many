@@ -41,6 +41,7 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public Address updateAddress(Address address) {
 		//address.setFriend(friendRepository.findById(address.getFriendId()).get());
+		//address.setFriend(friendRepository.findById(address.getFriend().getId()).get());
 		return addressRepository.save(address);
 	}
 

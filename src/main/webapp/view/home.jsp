@@ -16,9 +16,8 @@
 		<a href="${path}/address/all">View All Friends With Addresses</a>
 	</p>
 	<p>
-		<a href="${path}/friend/form">Add new Friend</a>
+		<a href="${path}/friend/new">Add new Friend</a>
 	</p>
-
 	<p>
 		<a href="${path}/address/form">Add Address</a>
 	</p>

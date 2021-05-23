@@ -11,37 +11,37 @@ import com.mightyjava.repository.FriendRepository;
 @Service
 public class FriendServiceImpl implements FriendService {
 
-	private FriendRepository userRepository;
+	private FriendRepository friendRepository;
 
 	@Autowired
 	public FriendServiceImpl(FriendRepository userRepository) {
-		this.userRepository = userRepository;
+		this.friendRepository = userRepository;
 	}
 
 	@Override
 	public List<Friend> findAllFriends() {
-		return userRepository.findAll();
+		return friendRepository.findAll();
 	}
 
 	@Override
 	public Friend findFrind(Long id) {
-		return userRepository.findById(id).get();
+		return friendRepository.findById(id).get();
 	}
 
 	@Override
 	public Friend saveFriend(Friend friend) {
-		return userRepository.save(friend);
+		return friendRepository.save(friend);
 	}
 
 	@Override
 	public Friend updateFriend(Friend friend) {
-		return userRepository.save(friend);
+		return friendRepository.save(friend);
 	}
 
 	@Override
 	public String deleteFriend(Long id) {
-		userRepository.deleteById(id);
-		return "{'message':'User deleted successfully.'}";
+		friendRepository.deleteById(id);
+		return "{'message':'Friend deleted successfully.'}";
 	}
 
 }

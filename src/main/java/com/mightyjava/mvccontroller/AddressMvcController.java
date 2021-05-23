@@ -68,7 +68,7 @@ public class AddressMvcController {
 	public String addressList(Model model) {
 		List<Address> list = addressService.addressList();
 		model.addAttribute("list", list);
-		return "address/view_all_addresses_with_all_friends";
+		return "address/view_all_friends_with_addresses";
 	}
 
 	@RequestMapping("/delete/{id}")

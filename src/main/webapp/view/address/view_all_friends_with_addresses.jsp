@@ -10,34 +10,36 @@
 <body>
 <center>
 	<p><a href="${path}/friend/">Home</a> | <a href="${path}/friend/form">Add a New Friends</a> | <a href="${path}/friend/all">View All Friends</a></p>
+	<h1> All Friends - All Addresses </h1>
 	<table border="1">
 		<thead>
 			<tr>
-				<!-- <th>Friend ID</th> -->
+				<th>Friend ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<!-- <th>Address ID</th> -->
+				<th>Edit / Deletes</th>
+				<th>Address ID</th>
 				<th>City</th>
 				<th>State</th>
 				<th>Country</th>
 				<th>Category</th>
-				<th>Edit Address</th>
-				<th>Delete Address</th>
+				<th>Edit / Deletes</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="address">
 				<tr>
-					<%-- <td>${address.friend.id}</td> --%>
+					<td>${address.friend.id}</td>
 					<td>${address.friend.firstName}</td>
 					<td>${address.friend.lastName}</td>
-					<%-- <td>${address.id}</td> --%>
+					<td><a href="${path}/friend/editFriendForm/${address.friend.id}">Edit / <a href="${path}/friend/delete/${address.friend.id}">Delete</a></a></td>
+					<td>${address.id}</td>
 					<td>${address.city}</td>
 					<td>${address.state}</td>
 					<td>${address.country}</td>
 					<td>${address.category}</td>
-					<td><a href="${path}/address/editAddressForm/${address.id}">Edit This Address</a></td>
-					<td><a href="${path}/address/delete/${address.id}">Delete This Address</a></td>
+					<td><a href="${path}/address/editAddressForm/${address.id}">Edit</a> /
+					<a href="${path}/address/delete/${address.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

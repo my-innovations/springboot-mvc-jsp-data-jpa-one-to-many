@@ -1,6 +1,8 @@
 package com.mightyjava.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,34 +10,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 //@Data
 //@NoArgsConstructor
 //@AllArgsConstructor
 //@Builder
 @Entity
-public class Address {
+public class Address { //child entity/table
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addr_seq")
 	@SequenceGenerator(initialValue = 1, name = "addr_seq", sequenceName = "addr_sequence")
-	private Long id; //PK
+	private Long id; //PK column
 	private String city;
 	private String state;
 	private String country;
 	private String category;
-
 	// for updating the address for the below friendId.
 	private transient Long friendId;
-
-	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@ManyToOne
-	@JoinColumn(name = "friend_id", nullable = false, updatable = false) 
-	private Friend friend; // FK column  friend_id in Address table.
+	@ManyToOne(
+			targetEntity = Friend.class,
+			cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
+			//cascade = {CascadeType.REMOVE}, //This will remove all the assotiated parent records. do not use this.
+			fetch = FetchType.EAGER)
+	@JoinColumn(name = "friend_id", nullable = true, updatable = true) // FK column
+	private Friend friend; 
 
 	public Long getId() {
 		return id;
@@ -98,6 +96,4 @@ public class Address {
 		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + ", category="
 				+ category + ", friend=" + friend + "]";
 	}
-
-	
 }

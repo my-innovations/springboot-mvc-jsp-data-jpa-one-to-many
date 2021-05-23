@@ -32,9 +32,9 @@ public class FriendMvcController {
 	@RequestMapping({ "/", "/home" })
 	public String homePage() {
 		return "home";
-	}
+	}//http://localhost:8081/friend/
 
-	@GetMapping("/form")
+	@GetMapping("/new")
 	public String userForm(Model model) {
 		model.addAttribute("friendForm", new Friend());
 		return "friend/add_friend_form";
@@ -47,9 +47,10 @@ public class FriendMvcController {
 	}
 
 	@RequestMapping("/{id}")
-	public String findFriendById(@PathVariable Long id) {
-		friendService.findFrind(id);
-		return "";
+	public String findFriendById(@PathVariable Long id,ModelMap map) {
+		Friend f = friendService.findFrind(id);
+		map.addAttribute("friend", f);
+		return "friend/view_frind_addresses";
 	}
 	
 	@RequestMapping("/all")
@@ -74,6 +75,7 @@ public class FriendMvcController {
 	
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public String UpdateAddressById(@Valid @ModelAttribute Friend friend,BindingResult br, ModelMap map) {
+		
 		if (br.hasErrors()) {
 			return "friend/update_friend_form";
 		}
