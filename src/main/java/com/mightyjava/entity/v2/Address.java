@@ -10,10 +10,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(exclude="friend") 
 @Entity
 public class Address { //child entity/table
 
@@ -36,7 +43,8 @@ public class Address { //child entity/table
 	@JoinColumn(name = "friend_id", nullable = false, updatable = true) // FK column
 	private Friend friend; 
 
-	
+
+	/*
 	public Long getId() {
 		return id;
 	}
@@ -97,5 +105,5 @@ public class Address { //child entity/table
 	public String toString() {
 		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + ", category="
 				+ category + ", friend=" + friend + "]";
-	}
+	}*/
 }

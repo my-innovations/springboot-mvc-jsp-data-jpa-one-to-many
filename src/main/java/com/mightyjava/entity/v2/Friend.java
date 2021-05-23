@@ -14,10 +14,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(exclude="addresses") 
 @Entity
 @Table(name="friend",uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
 public class Friend { //parent entity
@@ -27,10 +34,13 @@ public class Friend { //parent entity
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "f_seq")
 	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
 	private Long id;
+	
 	@Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
 	private String firstName;
+	
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
+	
 	@OneToMany(
 			mappedBy = "friend", 
 			fetch = FetchType.LAZY, 
@@ -41,6 +51,7 @@ public class Friend { //parent entity
 			)
 	private Set<Address> addresses;
 	
+	/*
 	public Friend() {}
 	
 	public Long getId() {
@@ -79,5 +90,5 @@ public class Friend { //parent entity
 	public String toString() {
 		return "Friend [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
 				+ "]";
-	}
+	}*/
 }
