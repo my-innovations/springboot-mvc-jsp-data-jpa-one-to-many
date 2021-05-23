@@ -17,8 +17,8 @@
 				<th>Friend Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Edit/Delete</th>
-				<th>Address</th>
+				<th>Edit / Delete Friend</th>
+				<th>Add / View Address</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,7 +28,7 @@
 					<td>${friend.firstName}</td>
 					<td>${friend.lastName}</td>
 					<td><a href="${path}/friend/editFriendForm/${friend.id}">Edit / <a href="${path}/friend/delete/${friend.id}">Delete</a></a></td>
-					<td><a href="${path}/address/form">Add New Addresses</a> | <a href="${path}/friend/${friend.id}">View All Addresses</a></td>
+					<td><a href="${path}/address/form">Add </a> / <a href="${path}/friend/${friend.id}">View All Addresses</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

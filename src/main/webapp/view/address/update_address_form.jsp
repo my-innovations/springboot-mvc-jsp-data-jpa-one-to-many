@@ -210,6 +210,9 @@ footer a {
 				<td><form:errors path = "category" cssClass = "errormsg" /></td>
 			</tr>
 			<tr>
+			<td>Friend ID :</td> <td><form:input path="friendId" placeholder="Enter Friend ID"/></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td><input type="submit" value="Update" /></td>
 			</tr>

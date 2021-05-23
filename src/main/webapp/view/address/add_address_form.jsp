@@ -10,6 +10,7 @@
 </head>
 <body>
 	<p><a href="${path}/address/all"> List Address</a></p>
+	
 	<form:form method="post" action="${path}/address/save" modelAttribute="addressForm">
 		<form:hidden path="id"/>
 		<p>City Name : <form:input path="city" placeholder="Enter City Name"/></p>
@@ -17,9 +18,8 @@
 		<p>Country Name : <form:input path="country" placeholder="Enter Country Name"/></p>
 		<p>Category : <form:input path="category" placeholder="Enter Category Name Permanent or Present"/></p>
 		<p>Friend ID : <form:input path="friendId" placeholder="Enter Friend ID"/></p>
-		<p>
-			<form:button value="Save">Save</form:button> 
-		</p>
+		<p>	<form:button value="Save">Save</form:button> </p>
 	</form:form>
+	
 </body>
 </html>

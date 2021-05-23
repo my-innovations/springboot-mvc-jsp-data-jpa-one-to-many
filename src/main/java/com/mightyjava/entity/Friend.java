@@ -32,18 +32,17 @@ public class Friend { //parent entity
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 	@OneToMany(
-			targetEntity = Address.class, 
 			mappedBy = "friend", 
 			fetch = FetchType.LAZY, 
-			cascade = {CascadeType.ALL}) //This will delete all the assotiated child records.
-			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, 
-			//,orphanRemoval = true)
-	//@JoinColumn(name="friend_id")
-	
-	//private Set<Address> addresses= new HashSet<>(); //Ok
+			//cascade = {CascadeType.ALL} //This will delete all the assotiated child records while deleting parent record.
+			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
+			cascade = {CascadeType.PERSIST,CascadeType.REMOVE}
+			//,orphanRemoval = true
+			)
 	private Set<Address> addresses;
 	
-
+	public Friend() {}
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,12 +75,9 @@ public class Friend { //parent entity
 		//this.addresses.clear();
 		this.addresses.addAll(addresses);
 	}
-
 	@Override
 	public String toString() {
 		return "Friend [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
 				+ "]";
 	}
-
-	
 }

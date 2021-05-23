@@ -29,12 +29,7 @@ public class FriendServiceImpl implements FriendService {
 	}
 
 	@Override
-	public Friend saveFriend(Friend friend) {
-		return friendRepository.save(friend);
-	}
-
-	@Override
-	public Friend updateFriend(Friend friend) {
+	public Friend saveOrUpdateFriend(Friend friend) {
 		return friendRepository.save(friend);
 	}
 

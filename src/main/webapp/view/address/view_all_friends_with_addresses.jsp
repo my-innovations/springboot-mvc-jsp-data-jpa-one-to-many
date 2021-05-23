@@ -9,7 +9,7 @@
 </head>
 <body>
 <center>
-	<p><a href="${path}/friend/">Home</a> | <a href="${path}/friend/form">Add a New Friends</a> | <a href="${path}/friend/all">View All Friends</a></p>
+	<p><a href="${path}/friend/">Home</a> | <a href="${path}/friend/new">Add a New Friends</a> | <a href="${path}/friend/all">View All Friends</a></p>
 	<h1> All Friends - All Addresses </h1>
 	<table border="1">
 		<thead>

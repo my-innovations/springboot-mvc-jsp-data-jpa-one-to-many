@@ -32,7 +32,7 @@ public class FriendMvcController {
 	@RequestMapping({ "/", "/home" })
 	public String homePage() {
 		return "home";
-	}//http://localhost:8081/friend/
+	}// http://localhost:8081/friend/
 
 	@GetMapping("/new")
 	public String userForm(Model model) {
@@ -42,29 +42,29 @@ public class FriendMvcController {
 
 	@RequestMapping("/save")
 	public String saveFriend(@ModelAttribute Friend friend) {
-		friendService.saveFriend(friend);
+		friendService.saveOrUpdateFriend(friend);
 		return "redirect:/friend/all";
 	}
 
 	@RequestMapping("/{id}")
-	public String findFriendById(@PathVariable Long id,ModelMap map) {
+	public String findFriendById(@PathVariable Long id, ModelMap map) {
 		Friend f = friendService.findFrind(id);
 		map.addAttribute("friend", f);
 		return "friend/view_frind_addresses";
 	}
-	
+
 	@RequestMapping("/all")
 	public String friendsList(Model model) {
 		List<Friend> list = friendService.findAllFriends();
 		model.addAttribute("friends", list);
 		return "friend/view_all_friends";
 	}
-	
+
 	@RequestMapping(value = "/newAddressForm/{friend_id}", method = RequestMethod.GET)
 	public String updateAddressFormPage() {
 		return "address/update_address_form";
 	}
-	
+
 	@RequestMapping(value = "/editFriendForm/{friend_id}", method = RequestMethod.GET)
 	public String updateFriendFormPage(@PathVariable Long friend_id, ModelMap map) {
 		Friend friend = friendService.findFrind(friend_id);
@@ -72,14 +72,13 @@ public class FriendMvcController {
 		return "friend/update_friend_form";
 	}
 
-	
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
-	public String UpdateAddressById(@Valid @ModelAttribute Friend friend,BindingResult br, ModelMap map) {
-		
+	public String UpdateAddressById(@Valid @ModelAttribute Friend friend, BindingResult br, ModelMap map) {
+
 		if (br.hasErrors()) {
 			return "friend/update_friend_form";
 		}
-		friendService.updateFriend(friend);
+		friendService.saveOrUpdateFriend(friend);
 		return "redirect:/friend/all";
 	}
 

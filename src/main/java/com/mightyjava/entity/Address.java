@@ -28,13 +28,15 @@ public class Address { //child entity/table
 	// for updating the address for the below friendId.
 	private transient Long friendId;
 	@ManyToOne(
-			targetEntity = Friend.class,
-			cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-			//cascade = {CascadeType.REMOVE}, //This will remove all the assotiated parent records. do not use this.
-			fetch = FetchType.EAGER)
-	@JoinColumn(name = "friend_id", nullable = true, updatable = true) // FK column
+			//targetEntity = Friend.class,
+			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
+			cascade = CascadeType.PERSIST,
+			//cascade = CascadeType.REMOVE, //This will remove all the assotiated parent records. do not use this.
+			fetch = FetchType.LAZY)
+	@JoinColumn(name = "friend_id", nullable = false, updatable = true) // FK column
 	private Friend friend; 
 
+	
 	public Long getId() {
 		return id;
 	}

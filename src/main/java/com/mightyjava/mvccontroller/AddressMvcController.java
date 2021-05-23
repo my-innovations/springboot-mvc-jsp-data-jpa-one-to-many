@@ -43,14 +43,14 @@ public class AddressMvcController {
 
 	@RequestMapping("/{id}")
 	public String findAddressById(@PathVariable Long id, Model model) {
-		Address address = addressService.findAddressById(id);
+		Address address = addressService.findAddressByAddressId(id);
 		model.addAttribute("address", address);
 		return "view_address_by_id";
 	}
 
 	@RequestMapping(value = "/editAddressForm/{addr_id}", method = RequestMethod.GET)
 	public String updateAddressFormPage(@PathVariable Long addr_id, ModelMap map) {
-		Address address = addressService.findAddressById(addr_id);
+		Address address = addressService.findAddressByAddressId(addr_id);
 		map.addAttribute("address", address);
 		return "address/update_address_form";
 	}

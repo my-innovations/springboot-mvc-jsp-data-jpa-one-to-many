@@ -12,9 +12,8 @@ import com.mightyjava.repository.FriendRepository;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-	
-	private AddressRepository addressRepository;
 	private FriendRepository friendRepository;
+	private AddressRepository addressRepository;
 
 	@Autowired
 	public AddressServiceImpl(AddressRepository addressRepository, FriendRepository friendRepository) {
@@ -27,31 +26,30 @@ public class AddressServiceImpl implements AddressService {
 		address.setFriend(friendRepository.findById(address.getFriendId()).get());
 		return addressRepository.save(address);
 	}
+	
+	@Override
+	public Address findAddressByAddressId(Long id) {
+		return addressRepository.findById(id).get();
+	}
 
 	@Override
 	public List<Address> addressList() {
 		return addressRepository.findAll();
 	}
-
+	
 	@Override
-	public Address findAddressById(Long id) {
-		return addressRepository.findById(id).get();
+	public List<Address> findAddressByFriendId(Long friendId) {
+		return addressRepository.findByFriend(friendRepository.findById(friendId).get());
 	}
 
 	@Override
 	public Address updateAddress(Address address) {
-		//address.setFriend(friendRepository.findById(address.getFriendId()).get());
-		//address.setFriend(friendRepository.findById(address.getFriend().getId()).get());
+		address.setFriend(friendRepository.findById(address.getFriendId()).get());
 		return addressRepository.save(address);
 	}
 
 	@Override
 	public void deleteAddress(Long id) {
 		addressRepository.deleteById(id);
-	}
-
-	@Override
-	public List<Address> findAddressByFriendId(Long friendId) {
-		return addressRepository.findByFriend(friendRepository.findById(friendId).get());
 	}
 }

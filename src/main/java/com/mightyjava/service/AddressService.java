@@ -7,7 +7,7 @@ import com.mightyjava.entity.Address;
 public interface AddressService {
 	
 	Address saveAddress(Address address);
-	Address findAddressById(Long id);
+	Address findAddressByAddressId(Long id);
 	List<Address> findAddressByFriendId(Long friendId);
 	List<Address> addressList();
 	public Address updateAddress(Address address);
