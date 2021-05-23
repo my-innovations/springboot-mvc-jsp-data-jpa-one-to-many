@@ -1,4 +1,4 @@
-package com.mightyjava.entity;
+package com.mightyjava.entity.v2;
 
 import java.util.Set;
 
@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 //@AllArgsConstructor
 //@Builder
 @Entity
-@Table(name="friend",uniqueConstraints = {@UniqueConstraint(columnNames = "id")/*,@UniqueConstraint(columnNames = "EMAIL") */})
+@Table(name="friend",uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
 public class Friend { //parent entity
 
 	@Id

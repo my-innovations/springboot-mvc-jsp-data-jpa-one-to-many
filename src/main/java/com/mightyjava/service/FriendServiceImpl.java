@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mightyjava.entity.Friend;
+import com.mightyjava.entity.v2.Friend;
 import com.mightyjava.repository.FriendRepository;
 
 @Service

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.mightyjava.entity.Address;
-import com.mightyjava.entity.Friend;
+import com.mightyjava.entity.v2.Address;
+import com.mightyjava.entity.v2.Friend;
 
 public interface AddressRepository extends JpaRepository<Address, Long> {
 	

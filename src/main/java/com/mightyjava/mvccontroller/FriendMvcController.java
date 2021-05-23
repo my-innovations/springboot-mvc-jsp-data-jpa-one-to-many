@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mightyjava.entity.Friend;
+import com.mightyjava.entity.v2.Friend;
 import com.mightyjava.service.FriendService;
 
 @Controller
