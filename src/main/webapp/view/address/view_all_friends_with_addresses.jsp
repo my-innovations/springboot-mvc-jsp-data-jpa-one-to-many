@@ -17,13 +17,15 @@
 				<th>Friend ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Edit / Deletes</th>
+				<th>Edit / Delete Friend </th>
+				<th></th>
 				<th>Address ID</th>
 				<th>City</th>
 				<th>State</th>
 				<th>Country</th>
 				<th>Category</th>
-				<th>Edit / Deletes</th>
+				<th>Friend ID</th>
+				<th>Edit / Delete Address</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,14 +34,15 @@
 					<td>${address.friend.id}</td>
 					<td>${address.friend.firstName}</td>
 					<td>${address.friend.lastName}</td>
-					<td><a href="${path}/friend/editFriendForm/${address.friend.id}">Edit / <a href="${path}/friend/delete/${address.friend.id}">Delete</a></a></td>
+					<td align="center"><a href="${path}/friend/editFriendForm/${address.friend.id}">Edit / <a href="${path}/friend/delete/${address.friend.id}">Delete</a></a></td>
+					<td></td>
 					<td>${address.id}</td>
 					<td>${address.city}</td>
 					<td>${address.state}</td>
 					<td>${address.country}</td>
 					<td>${address.category}</td>
-					<td><a href="${path}/address/editAddressForm/${address.id}">Edit</a> /
-					<a href="${path}/address/delete/${address.id}">Delete</a></td>
+					<td>${address.friend.id}</td>
+					<td align="center"><a href="${path}/address/editAddressForm/${address.id}">Edit</a> / 	<a href="${path}/address/delete/${address.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

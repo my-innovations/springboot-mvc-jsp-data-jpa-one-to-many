@@ -41,7 +41,7 @@ public class FriendMvcController {
 	}
 
 	@RequestMapping("/save")
-	public String saveFriend(@Valid @ModelAttribute Friend friend,BindingResult br) {
+	public String saveFriend(@Valid @ModelAttribute Friend friend, BindingResult br) {
 		if (br.hasErrors()) {
 			return "friend/add_friend_form";
 		}
@@ -78,10 +78,10 @@ public class FriendMvcController {
 		friendService.saveOrUpdateFriend(friend);
 		return "redirect:/friend/all";
 	}
-	
-	//not used
+
+	// not used
 	@RequestMapping(value = "/newAddressForm/{friend_id}", method = RequestMethod.GET)
-	public String saveOrUpdateAddressFormPage(@PathVariable Long id,Model model) {
+	public String saveOrUpdateAddressFormPage(@PathVariable Long id, Model model) {
 		model.addAttribute("friendId", id);
 		return "address/add_address_form";
 	}
