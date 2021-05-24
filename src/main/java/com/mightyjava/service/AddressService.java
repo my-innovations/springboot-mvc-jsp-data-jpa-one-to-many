@@ -7,8 +7,8 @@ import com.mightyjava.entity.v2.Address;
 public interface AddressService {
 	
 	public Address saveOrUpdateAddress(Address address);
-	public Address findAddressByAddressId(Long id);
+	public Address findAddressByAddressId(Long addrId);
 	public List<Address> findAllAddressesByFriendId(Long friendId);
 	public List<Address> findAllAddresses();
-	public void deleteAddressById(Long id);
+	public void deleteAddressByAddrId(Long addrId);
 }

@@ -45,9 +45,9 @@ public class AddressMvcController {
 		return "redirect:/address/all";
 	}
 
-	@RequestMapping("/{id}")
-	public String findAddressById(@PathVariable Long id, Model model) {
-		Address address = addressService.findAddressByAddressId(id);
+	@RequestMapping("/{addrId}")
+	public String findAddressById(@PathVariable Long addrId, Model model) {
+		Address address = addressService.findAddressByAddressId(addrId);
 		model.addAttribute("address", address);
 		return "view_address_by_id";
 	}
@@ -75,9 +75,9 @@ public class AddressMvcController {
 		return "redirect:/address/all";
 	}
 
-	@RequestMapping("/delete/{id}")
-	public String deleteAddress(@PathVariable Long id) {
-		addressService.deleteAddressById(id);
+	@RequestMapping("/delete/{addrId}")
+	public String deleteAddress(@PathVariable Long addrId) {
+		addressService.deleteAddressByAddrId(addrId);
 		return "redirect:/address/all";
 	}
 }

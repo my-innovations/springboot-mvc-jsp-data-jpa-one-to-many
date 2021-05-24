@@ -9,5 +9,5 @@ import com.mightyjava.entity.v2.Friend;
 public interface FriendRepository extends JpaRepository<Friend, Long> {
 	
 	@Query("FROM Friend WHERE firstName = :firstName")
-	Friend findByUsername(@Param("firstName") String firstName);
+	public Friend findByUsername(@Param("firstName") String firstName);
 }

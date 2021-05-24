@@ -49,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
 	}*/
 
 	@Override
-	public void deleteAddressById(Long id) {
+	public void deleteAddressByAddrId(Long id) {
 		addressRepository.deleteById(id);
 	}
 }

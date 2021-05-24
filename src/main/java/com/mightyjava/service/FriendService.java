@@ -7,8 +7,7 @@ import com.mightyjava.entity.v2.Friend;
 public interface FriendService {
 	
 	Friend saveOrUpdateFriend(Friend friend);
-	Friend findFrind(Long id);
+	Friend findFrindById(Long id);
 	List<Friend> findAllFriends();
-	//Friend updateFriend(Friend friend);
-	String deleteFriend(Long id);
+	String deleteFriendById(Long id);
 }

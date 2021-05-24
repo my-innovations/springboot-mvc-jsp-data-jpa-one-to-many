@@ -24,7 +24,7 @@ public class FriendServiceImpl implements FriendService {
 	}
 
 	@Override
-	public Friend findFrind(Long id) {
+	public Friend findFrindById(Long id) {
 		return friendRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class FriendServiceImpl implements FriendService {
 	}
 
 	@Override
-	public String deleteFriend(Long id) {
+	public String deleteFriendById(Long id) {
 		friendRepository.deleteById(id);
 		return "{'message':'Friend deleted successfully.'}";
 	}

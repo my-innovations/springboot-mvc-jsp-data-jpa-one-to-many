@@ -12,6 +12,6 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 	//@Query("FROM Address a WHERE a.friend.id = :friendId")
 	//public List<Address> findAddressesByFriendId(@Param("friendId") Long friendId);
 	
-	List<Address> findByFriend(Friend friend);
+	public List<Address> findByFriend(Friend friend);
 
 }
