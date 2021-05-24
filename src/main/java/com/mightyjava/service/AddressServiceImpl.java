@@ -22,7 +22,7 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public Address saveAddress(Address address) {
+	public Address saveOrUpdateAddress(Address address) {
 		address.setFriend(friendRepository.findById(address.getFriendId()).get());
 		return addressRepository.save(address);
 	}
@@ -33,23 +33,23 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public List<Address> addressList() {
+	public List<Address> findAllAddresses() {
 		return addressRepository.findAll();
 	}
 	
 	@Override
-	public List<Address> findAddressByFriendId(Long friendId) {
+	public List<Address> findAllAddressesByFriendId(Long friendId) {
 		return addressRepository.findByFriend(friendRepository.findById(friendId).get());
 	}
 
-	@Override
+	/*@Override
 	public Address updateAddress(Address address) {
 		address.setFriend(friendRepository.findById(address.getFriendId()).get());
 		return addressRepository.save(address);
-	}
+	}*/
 
 	@Override
-	public void deleteAddress(Long id) {
+	public void deleteAddressById(Long id) {
 		addressRepository.deleteById(id);
 	}
 }

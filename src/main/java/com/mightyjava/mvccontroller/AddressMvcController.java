@@ -37,8 +37,11 @@ public class AddressMvcController {
 	}
 
 	@RequestMapping("/save")
-	public String saveAddress(@ModelAttribute Address address) {
-		addressService.saveAddress(address);
+	public String saveAddress(@Valid @ModelAttribute Address address, BindingResult br, ModelMap map) {
+		if (br.hasErrors()) {
+			return "address/add_address_form";
+		}
+		addressService.saveOrUpdateAddress(address);
 		return "redirect:/address/all";
 	}
 
@@ -49,9 +52,16 @@ public class AddressMvcController {
 		return "view_address_by_id";
 	}
 
-	@RequestMapping(value = "/editAddressForm/{addr_id}", method = RequestMethod.GET)
-	public String updateAddressFormPage(@PathVariable Long addr_id, ModelMap map) {
-		Address address = addressService.findAddressByAddressId(addr_id);
+	@RequestMapping("/all")
+	public String addressList(Model model) {
+		List<Address> list = addressService.findAllAddresses();
+		model.addAttribute("list", list);
+		return "address/view_all_friends_with_addresses";
+	}
+
+	@RequestMapping(value = "/editAddressForm/{addrId}", method = RequestMethod.GET)
+	public String updateAddressFormPage(@PathVariable Long addrId, ModelMap map) {
+		Address address = addressService.findAddressByAddressId(addrId);
 		map.addAttribute("address", address);
 		return "address/update_address_form";
 	}
@@ -61,20 +71,13 @@ public class AddressMvcController {
 		if (br.hasErrors()) {
 			return "address/update_address_form";
 		}
-		addressService.updateAddress(address);
+		addressService.saveOrUpdateAddress(address);
 		return "redirect:/address/all";
-	}
-
-	@RequestMapping("/all")
-	public String addressList(Model model) {
-		List<Address> list = addressService.addressList();
-		model.addAttribute("list", list);
-		return "address/view_all_friends_with_addresses";
 	}
 
 	@RequestMapping("/delete/{id}")
 	public String deleteAddress(@PathVariable Long id) {
-		addressService.deleteAddress(id);
+		addressService.deleteAddressById(id);
 		return "redirect:/address/all";
 	}
 }

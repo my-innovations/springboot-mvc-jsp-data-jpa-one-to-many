@@ -6,10 +6,9 @@ import com.mightyjava.entity.v2.Address;
 
 public interface AddressService {
 	
-	Address saveAddress(Address address);
-	Address findAddressByAddressId(Long id);
-	List<Address> findAddressByFriendId(Long friendId);
-	List<Address> addressList();
-	public Address updateAddress(Address address);
-	void deleteAddress(Long id);
+	public Address saveOrUpdateAddress(Address address);
+	public Address findAddressByAddressId(Long id);
+	public List<Address> findAllAddressesByFriendId(Long friendId);
+	public List<Address> findAllAddresses();
+	public void deleteAddressById(Long id);
 }
