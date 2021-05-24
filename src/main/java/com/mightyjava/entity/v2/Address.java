@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @EqualsAndHashCode(exclude="friend") 
 @Entity
+@Table(name="ADDRESS",uniqueConstraints = {@UniqueConstraint(columnNames = "ID")})
 public class Address { //child entity/table
 
 	@Id
@@ -32,8 +35,7 @@ public class Address { //child entity/table
 	private String state;
 	private String country;
 	private String category;
-	// for updating the address for the below friendId.
-	private transient Long friendId;
+	
 	@ManyToOne(
 			//targetEntity = Friend.class,
 			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
@@ -42,6 +44,9 @@ public class Address { //child entity/table
 			fetch = FetchType.LAZY)
 	@JoinColumn(name = "friend_id", nullable = false, updatable = true) // FK column
 	private Friend friend; 
+	
+	// for updating the address record for the below friendId.
+	private transient Long friendId;
 
 
 	/*

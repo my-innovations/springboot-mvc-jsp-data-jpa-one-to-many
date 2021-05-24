@@ -26,11 +26,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @EqualsAndHashCode(exclude="addresses") 
 @Entity
-@Table(name="friend",uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
+@Table(name="FRIEND",uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
 public class Friend { //parent entity
 
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "ID", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "f_seq")
 	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
 	private Long id;
