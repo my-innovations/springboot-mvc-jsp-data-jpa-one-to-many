@@ -37,11 +37,11 @@ public class FriendMvcController {
 	@GetMapping("/new")
 	public String saveFriendForm(Model model) {
 		model.addAttribute("newFriend", new Friend());
-		return "friend/add_friend_form";
+		return "friend/add_friend_form2";
 	}
 
-	@RequestMapping("/save")
-	public String saveFriend(@Valid @ModelAttribute Friend friend, BindingResult br) {
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String saveFriend(@Valid @ModelAttribute Friend friend, BindingResult br,ModelMap map) {
 		if (br.hasErrors()) {
 			return "friend/add_friend_form";
 		}

@@ -36,11 +36,11 @@ public class Friend { //parent entity
 	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message="Please enter firstname")
 	@Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
 	private String firstName;
 	
-	@NotBlank
+	@NotBlank(message="Please enter lastname")
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 	
