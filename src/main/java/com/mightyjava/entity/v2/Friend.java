@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,9 +36,11 @@ public class Friend { //parent entity
 	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
 	private Long id;
 	
+	@NotBlank
 	@Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
 	private String firstName;
 	
+	@NotBlank
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 	

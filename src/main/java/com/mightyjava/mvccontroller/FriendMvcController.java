@@ -35,34 +35,32 @@ public class FriendMvcController {
 	}// http://localhost:8081/friend/
 
 	@GetMapping("/new")
-	public String userForm(Model model) {
-		model.addAttribute("friendForm", new Friend());
+	public String saveFriendForm(Model model) {
+		model.addAttribute("newFriend", new Friend());
 		return "friend/add_friend_form";
 	}
 
 	@RequestMapping("/save")
-	public String saveFriend(@ModelAttribute Friend friend) {
+	public String saveFriend(@Valid @ModelAttribute Friend friend,BindingResult br) {
+		if (br.hasErrors()) {
+			return "friend/add_friend_form";
+		}
 		friendService.saveOrUpdateFriend(friend);
 		return "redirect:/friend/all";
 	}
 
 	@RequestMapping("/{id}")
-	public String findFriendById(@PathVariable Long id, ModelMap map) {
+	public String findFriendWithAddressesByFriendId(@PathVariable Long id, ModelMap map) {
 		Friend f = friendService.findFrind(id);
 		map.addAttribute("friend", f);
 		return "friend/view_frind_addresses";
 	}
 
 	@RequestMapping("/all")
-	public String friendsList(Model model) {
+	public String allFriendsList(Model model) {
 		List<Friend> list = friendService.findAllFriends();
 		model.addAttribute("friends", list);
 		return "friend/view_all_friends";
-	}
-
-	@RequestMapping(value = "/newAddressForm/{friend_id}", method = RequestMethod.GET)
-	public String updateAddressFormPage() {
-		return "address/update_address_form";
 	}
 
 	@RequestMapping(value = "/editFriendForm/{friend_id}", method = RequestMethod.GET)
@@ -74,12 +72,18 @@ public class FriendMvcController {
 
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
 	public String UpdateAddressById(@Valid @ModelAttribute Friend friend, BindingResult br, ModelMap map) {
-
 		if (br.hasErrors()) {
 			return "friend/update_friend_form";
 		}
 		friendService.saveOrUpdateFriend(friend);
 		return "redirect:/friend/all";
+	}
+	
+	//not used
+	@RequestMapping(value = "/newAddressForm/{friend_id}", method = RequestMethod.GET)
+	public String saveOrUpdateAddressFormPage(@PathVariable Long id,Model model) {
+		model.addAttribute("friendId", id);
+		return "address/add_address_form";
 	}
 
 	@RequestMapping("/delete/{id}")

@@ -29,9 +29,10 @@ public class AddressMvcController {
 		this.addressService = addressService;
 	}
 
-	@GetMapping("/form")
-	public String addressForm(Model model) {
+	@GetMapping("/form/{friendId}")
+	public String addressForm(@PathVariable Long friendId,Model model) {
 		model.addAttribute("addressForm", new Address());
+		model.addAttribute("friendId", friendId);
 		return "address/add_address_form";
 	}
 

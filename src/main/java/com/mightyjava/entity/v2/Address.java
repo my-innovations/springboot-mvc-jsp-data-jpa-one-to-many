@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,9 +32,17 @@ public class Address { //child entity/table
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addr_seq")
 	@SequenceGenerator(initialValue = 1, name = "addr_seq", sequenceName = "addr_sequence")
 	private Long id; //PK column
+	
+	@NotBlank
 	private String city;
+	
+	@NotBlank
 	private String state;
+	
+	@NotBlank
 	private String country;
+	
+	@NotBlank
 	private String category;
 	
 	@ManyToOne(

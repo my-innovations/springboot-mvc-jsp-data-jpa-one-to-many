@@ -7,14 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Friend</title>
+<title>Add New Friend</title>
 </head>
 <body>
 	<p><a href="${path}/friend/all"> List Friends</a></p>
-	<form:form method="post" action="${path}/friend/save" modelAttribute="friendForm">
+	<form:form method="post" action="${path}/friend/save" modelAttribute="newFriend">
 		<form:hidden path="id"/>
-		<p>First Name : <form:input path="firstName" placeholder="Enter First Name"/></p>
-		<p>Last Name : <form:input path="lastName" placeholder="Enter Last Name"/></p>
+		<p>First Name : <form:input path="firstName" placeholder="Enter Firstname"/></p>
+		<p><form:errors path = "firstName" cssClass = "errormsg" /></p>
+		<p>Last Name : <form:input path="lastName" placeholder="Enter Lastname"/></p>
+		<p><form:errors path = "lastName" cssClass = "errormsg" /></p>
 		<p><form:button value="Save">Save</form:button></p>
 	</form:form>
 </body>

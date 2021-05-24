@@ -28,7 +28,7 @@
 					<td>${friend.firstName}</td>
 					<td>${friend.lastName}</td>
 					<td><a href="${path}/friend/editFriendForm/${friend.id}">Edit / <a href="${path}/friend/delete/${friend.id}">Delete</a></a></td>
-					<td><a href="${path}/address/form">Add </a> / <a href="${path}/friend/${friend.id}">View All Addresses</a></td>
+					<td><a href="${path}/address/form/${friend.id}">Add </a> / <a href="${path}/friend/${friend.id}">View All Addresses</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
