@@ -21,6 +21,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+//parent entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude="addresses") 
 @Entity
 @Table(name="FRIEND",uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
-public class Friend { //parent entity
+public class Friend {
 
 	@Id
 	@Column(name = "ID", unique = true, nullable = false)

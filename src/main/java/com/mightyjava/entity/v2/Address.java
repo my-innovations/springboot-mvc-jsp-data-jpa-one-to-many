@@ -19,6 +19,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+//child entity/table
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +27,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude="friend") 
 @Entity
 @Table(name="ADDRESS",uniqueConstraints = {@UniqueConstraint(columnNames = "ID")})
-public class Address { //child entity/table
+public class Address { 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addr_seq")

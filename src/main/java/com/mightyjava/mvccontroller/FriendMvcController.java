@@ -71,7 +71,7 @@ public class FriendMvcController {
 	}
 
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
-	public String UpdateAddressById(@Valid @ModelAttribute Friend friend, BindingResult br, ModelMap map) {
+	public String updateFriendById(@Valid @ModelAttribute Friend friend, BindingResult br, ModelMap map) {
 		if (br.hasErrors()) {
 			return "friend/update_friend_form";
 		}
@@ -87,7 +87,7 @@ public class FriendMvcController {
 	}
 
 	@RequestMapping("/delete/{friendId}")
-	public String deleteFriend(@PathVariable Long friendId) {
+	public String deleteFriendById(@PathVariable Long friendId) {
 		friendService.deleteFriendById(friendId);
 		return "redirect:/friend/all";
 	}

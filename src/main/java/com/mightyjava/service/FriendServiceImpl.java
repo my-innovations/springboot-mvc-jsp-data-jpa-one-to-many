@@ -38,5 +38,4 @@ public class FriendServiceImpl implements FriendService {
 		friendRepository.deleteById(id);
 		return "{'message':'Friend deleted successfully.'}";
 	}
-
 }
