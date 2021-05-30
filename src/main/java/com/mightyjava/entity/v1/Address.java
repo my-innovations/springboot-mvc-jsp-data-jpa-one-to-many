@@ -21,6 +21,7 @@ public class Address { // child entity/table
 	private String state;
 	private String country;
 	private String category;
+	
 	// for updating the address for the below friendId.
 	private transient Long friendId;
 
@@ -77,5 +78,4 @@ public class Address { // child entity/table
 		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + ", category="
 				+ category + "]";
 	}
-}
-*/
+}*/

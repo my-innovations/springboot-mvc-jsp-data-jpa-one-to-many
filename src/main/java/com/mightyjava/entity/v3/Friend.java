@@ -1,5 +1,5 @@
-package com.mightyjava.entity.v2;
-
+package com.mightyjava.entity.v3;
+/*
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -45,12 +47,11 @@ public class Friend {
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 	
-	/**
-	 * NOTE - This is Bidirectional one-to-many mapping
-	 */
+	//
+	 // Bidirectional one-to-many mapping using join table
+	 //
 	
 	@OneToMany(
-			targetEntity = Address.class,
 			mappedBy = "friend", 
 			fetch = FetchType.LAZY, 
 			//cascade = {CascadeType.ALL} //This will delete all the assotiated child records while deleting parent record.
@@ -58,6 +59,7 @@ public class Friend {
 			cascade = {CascadeType.PERSIST,CascadeType.REMOVE}
 			//,orphanRemoval = true
 			)
-	//@JoinColumn(name = "address_id", referencedColumnName = "id",nullable = false, updatable = true) // FK column will be createdin friends table
+	@JoinTable(name="friend_address",joinColumns = @JoinColumn(name="friend_id"),inverseJoinColumns = @JoinColumn(name="address_id"))
 	private Set<Address> addresses;
 }
+*/

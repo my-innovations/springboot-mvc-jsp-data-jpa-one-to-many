@@ -1,5 +1,5 @@
-package com.mightyjava.entity.v2;
-
+package com.mightyjava.entity.v3;
+/*
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,20 +46,19 @@ public class Address {
 	@NotBlank
 	private String category;
 	
-	/**
-	 * NOTE - This is Bidirectional one-to-many mapping
-	 */
+	 //
+	 // Bidirectional one-to-many mapping using join table
+	 //
 	
 	@ManyToOne(
-			targetEntity = Friend.class,
+			//targetEntity = Friend.class,
 			//cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
 			cascade = CascadeType.PERSIST,
 			//cascade = CascadeType.REMOVE, //This will remove all the assotiated parent records. do not use this.
 			fetch = FetchType.LAZY)
-	@JoinColumn(name = "friend_id", referencedColumnName = "id",nullable = false, updatable = true) // FK column will be createdin addressestable
 	private Friend friend; 
 	
 	// for updating the address record for the below friendId.
 	private transient Long friendId;
 
-}
+}*/

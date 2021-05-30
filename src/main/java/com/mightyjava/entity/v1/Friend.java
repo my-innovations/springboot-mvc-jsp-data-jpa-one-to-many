@@ -33,7 +33,9 @@ public class Friend { //parent entity
 	@Column(name = "LAST_NAME", unique = false, nullable = false, length = 100)
 	private String lastName;
 	
-	//unidirectional mapping
+	//
+	// NOTE - unidirectional mapping wiyth join clolumn
+	 //
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="friend_id")
 	private Set<Address> addresses;

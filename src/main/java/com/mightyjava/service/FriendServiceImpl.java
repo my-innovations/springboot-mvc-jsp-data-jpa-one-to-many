@@ -19,13 +19,13 @@ public class FriendServiceImpl implements FriendService {
 	}
 
 	@Override
-	public List<Friend> findAllFriends() {
-		return friendRepository.findAll();
+	public Friend findFrindById(Long id) {
+		return friendRepository.findById(id).get();
 	}
 
 	@Override
-	public Friend findFrindById(Long id) {
-		return friendRepository.findById(id).get();
+	public List<Friend> findAllFriends() {
+		return friendRepository.findAll();
 	}
 
 	@Override
